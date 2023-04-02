@@ -6,9 +6,18 @@ import './Expenses.css';
 import ExpensesFilter from './ExpensesFilter';
 
 const Expenses = (props) => {
+
+  const [year, setYear] = React.useState('');
+
+  const handleYearChange = (e) => {
+    console.log(e.target.value);
+    setYear(e.target.value)
+  }
+
+
   return (
     <Card className="expenses">
-      <ExpensesFilter />
+      <ExpensesFilter onYearChange={handleYearChange} year={year}/>
       <ExpenseItem
         title={props.items[0].title}
         amount={props.items[0].amount}
